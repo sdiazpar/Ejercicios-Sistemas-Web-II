@@ -1,0 +1,10 @@
+{
+    "name":"Las Meninas",
+    "artist":"Velázquez", 
+    "dimension":{
+        "width":320,
+        "height":279
+    }, 
+    "description":"Obra maestra del pintor del Siglo de Oro español Diego Velázquez", 
+    "tags":["oil","famous"]
+}

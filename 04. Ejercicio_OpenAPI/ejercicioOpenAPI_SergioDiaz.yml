@@ -1,0 +1,92 @@
+openapi: 3.1.0
+info:
+  title: API de Gestión de Películas
+  version: 0.0.1
+  description: Una API para gestionar películas y sesiones de cine.
+paths:
+  /movies:
+    get:
+      summary: Obtener todas las películas
+      responses:
+        '200':
+          description: Lista de películas obtenida con éxito
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    title:
+                      type: string
+                    duration:
+                      type: integer
+                    rating:
+                      type: number
+    post:
+      summary: Crear una nueva película
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                duration:
+                  type: integer
+                rating:
+                  type: number
+      responses:
+        '201':
+          description: Película creada exitosamente
+  /movies/{movie_id}:
+    get:
+      summary: Obtener una película por ID
+      parameters:
+        - name: movie_id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Información de la película obtenida
+        '404':
+          description: Película no encontrada
+  /sessions:
+    get:
+      summary: Obtener todas las sesiones
+      responses:
+        '200':
+          description: Lista de sesiones obtenida con éxito
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    movie_id:
+                      type: integer
+                    time:
+                      type: string
+                    available_seats:
+                      type: integer
+  /movies/{movie_id}/sessions:
+    get:
+      summary: Obtener sesiones de una película específica
+      parameters:
+        - name: movie_id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Lista de sesiones obtenida con éxito

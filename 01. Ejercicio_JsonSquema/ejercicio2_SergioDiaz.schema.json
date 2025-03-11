@@ -1,0 +1,45 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema#",
+    "$id": "http://example.com/schemas/ejercicio2_SergioDiaz.schema.json",
+    "type": "object",
+    "title": "Squadmembers",
+    "description": "Squadinformation",
+    "required": ["squadName", "homeTown", "formed", "secretBase", "active", "members"],
+    "properties": {
+        "squadName": {
+        "type": "string",
+        "description": "NameOfSquad"
+        },
+        "homeTown": {
+        "type": "string",
+        "description": "NameOfHomeTown"
+        },
+        "formed": {
+        "type": "number",
+        "description": "squadFormationYear"
+        },
+        "secretBase": {
+        "type": "string",
+        "description": "NameOfSecretBase"
+        },
+        "active": {
+        "type": "boolean",
+        "description": "TrueIfSquadActive"
+        },
+        "members": { "$ref": "#/$defs/members" }
+    },
+    "$defs": {
+        "members": {
+        "type": "array",
+        "title": "MembersInfo",
+        "description": "Describes the information of each squad member",
+        "required": ["name", "age", "secretIdentity", "powers"],
+        "properties": {
+            "name": { "type": "string", "description": "nameOfMember", "minimum": 1 },
+            "age": { "type": "number", "description": "ageOfMember", "minimum": 1 },
+            "secretIdentity": { "type": "string", "description": "secretIdentityOfMember", "minimum": 1 },
+            "powers": { "type": "array", "description": "powersOfTheSquadMember", "minimum": 1 }
+            }
+        }
+    }
+}
